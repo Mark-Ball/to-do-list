@@ -9,11 +9,11 @@
     <script src="js/bootstrap.min.js"></script>
     <title>To-do List</title>
 </head>
-<body>
-    <div class="heading">To Do</div>
+<body class="text-center">
+    <progress class="container-fluid bg-secondary" value="25" max="100"></progress>
     <h1>0</h1>
     <form>
-        <input type="text" placeholder="add a todo!"/>
+        <input class="container-fluid text-center" type="text" placeholder="add a todo!"/>
     </form>
     <div id="toDoList"></div>
 
@@ -25,12 +25,16 @@
             event.preventDefault();
 
             let newDiv = document.createElement("div");
+            newDiv.className = "container-fluid";
             newDiv.innerHTML = inputField.value;
+            newDiv.addEventListener ("click", () => {
+                newDiv.classList.toggle("bg-primary");
+            });
+
             document.body.appendChild(newDiv);
             inputField.value = "";
             document.querySelector("h1").innerHTML = ++counter;
         });
-
     </script>
 </body>
 </html>
