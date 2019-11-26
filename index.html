@@ -16,11 +16,11 @@
         const toDoList = document.querySelector("#toDoList");
         const inputField = document.querySelector("input[type=text]");
         let counter = 0;
-        console.log(toDoList);
         
         document.querySelector("input[type=submit]").addEventListener("click", () => {
-            document.getElementById("toDoList").appendChild(document.createElement("p"));
-            // toDoList.appendChild(inputField.value);
+            let newDiv = document.createElement("div");
+            newDiv.innerHTML = inputField.value;
+            document.body.appendChild(newDiv);
             inputField.value = "";
             document.querySelector("p").innerHTML = ++counter;
         });
