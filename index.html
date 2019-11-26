@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <title>To-do List</title>
 </head>
 <body>
-    <p>0</p>
-    <input type="text" />
-    <input type="submit" />
+    <div class="heading">To Do</div>
+    <h1>0</h1>
+    <form>
+        <input type="text" placeholder="add a todo!"/>
+    </form>
     <div id="toDoList"></div>
 
     <script>
-        const toDoList = document.querySelector("#toDoList");
         const inputField = document.querySelector("input[type=text]");
         let counter = 0;
         
-        document.querySelector("input[type=submit]").addEventListener("click", () => {
+        document.querySelector("form").addEventListener("submit", () => {
+            event.preventDefault();
+
             let newDiv = document.createElement("div");
             newDiv.innerHTML = inputField.value;
             document.body.appendChild(newDiv);
             inputField.value = "";
-            document.querySelector("p").innerHTML = ++counter;
+            document.querySelector("h1").innerHTML = ++counter;
         });
 
     </script>
