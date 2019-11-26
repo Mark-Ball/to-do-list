@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-do List</title>
+</head>
+<body>
+    <p>0</p>
+    <input type="text" />
+    <input type="submit" />
+    <div id="toDoList"></div>
+
+    <script>
+        const toDoList = document.querySelector("#toDoList");
+        const inputField = document.querySelector("input[type=text]");
+        let counter = 0;
+        console.log(toDoList);
+        
+        document.querySelector("input[type=submit]").addEventListener("click", () => {
+            document.getElementById("toDoList").appendChild(document.createElement("p"));
+            // toDoList.appendChild(inputField.value);
+            inputField.value = "";
+            document.querySelector("p").innerHTML = ++counter;
+        });
+
+    </script>
+</body>
+</html>
