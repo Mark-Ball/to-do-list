@@ -11,7 +11,7 @@
     <title>To-do List</title>
 </head>
 <body class="text-center">
-    <progress class="container-fluid bg-secondary" value="25" max="100"></progress>
+    <progress class="container-fluid" value="0"></progress>
     <div class="heading">To Do</div>
     <h1>0</h1>
     <form>
@@ -27,15 +27,22 @@
             event.preventDefault();
 
             let newDiv = document.createElement("div");
-            newDiv.className = "container-fluid";
+            newDiv.className = "task container-fluid";
             newDiv.innerHTML = inputField.value;
             newDiv.addEventListener ("click", () => {
-                newDiv.classList.toggle("bg-primary");
+                newDiv.classList.toggle("teal");
+                proportionOfTasksCompleted();
             });
 
             document.body.appendChild(newDiv);
             inputField.value = "";
             document.querySelector("h1").innerHTML = ++counter;
+
+            function proportionOfTasksCompleted() {
+                let completedTasks = document.querySelectorAll(".teal").length;
+                let totalTasks = document.querySelectorAll(".task").length;
+                return completedTasks / totalTasks;
+            }
         });
     </script>
 </body>

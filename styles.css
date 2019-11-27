@@ -5,3 +5,15 @@
     margin-bottom: 5px;
     text-transform: uppercase;
 }
+
+.teal {
+    background-color: rgb(0, 209, 178);
+}
+
+progress {
+    background-color: rgb(219, 219, 219);
+}
+
+progress:not([value]) {
+    color: red;
+}
