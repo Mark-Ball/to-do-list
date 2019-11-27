@@ -26,12 +26,12 @@
         document.querySelector("form").addEventListener("submit", () => {
             event.preventDefault();
 
-            let newDiv = document.createElement("div");
+            const newDiv = document.createElement("div");
             newDiv.className = "task container-fluid";
             newDiv.innerHTML = inputField.value;
             newDiv.addEventListener ("click", () => {
                 newDiv.classList.toggle("teal");
-                proportionOfTasksCompleted();
+                document.querySelector("progress").value = proportionOfTasksCompleted();
             });
 
             document.body.appendChild(newDiv);
@@ -39,8 +39,8 @@
             document.querySelector("h1").innerHTML = ++counter;
 
             function proportionOfTasksCompleted() {
-                let completedTasks = document.querySelectorAll(".teal").length;
-                let totalTasks = document.querySelectorAll(".task").length;
+                const completedTasks = document.querySelectorAll(".teal").length;
+                const totalTasks = document.querySelectorAll(".task").length;
                 return completedTasks / totalTasks;
             }
         });
