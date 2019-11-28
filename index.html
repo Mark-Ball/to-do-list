@@ -59,7 +59,12 @@
             newDiv.addEventListener("click", () => {
                 newDiv.classList.toggle("teal");
                 document.querySelector("progress").value = proportionOfTasksCompleted();
-            })
+            });
+
+            // second event listener to delete the outer div if clicked
+            secondInnerDiv.addEventListener("click", () => {
+                newDiv.remove();
+            });
 
             document.body.appendChild(newDiv);
             inputField.value = "";
