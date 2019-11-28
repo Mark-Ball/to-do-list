@@ -13,6 +13,12 @@
 <body class="text-center">
     <progress class="container-fluid" value="0"></progress>
     <div class="heading">To Do</div>
+
+    <div class="flex-container">
+        <div>center</div>
+        <div class="right">X</div>
+    </div>
+
     <h1>0</h1>
     <form>
         <input class="container-fluid text-center" type="text" placeholder="add a todo!"/>
@@ -26,13 +32,34 @@
         document.querySelector("form").addEventListener("submit", () => {
             event.preventDefault();
 
+            // to have each row be delete-able, we are creating a div that looks like this:
+            // <div class="flex-container">
+            //     <div>shopping</div>
+            //     <div class="right">X</div>
+            // </div>
+            // for this we must create each div separately, add the correct classes
+            // then stick them together into one big div
+
+            // create the outer div
             const newDiv = document.createElement("div");
-            newDiv.className = "task container-fluid";
-            newDiv.innerHTML = inputField.value;
-            newDiv.addEventListener ("click", () => {
+            newDiv.className = "task container-fluid flex-container";
+
+            // create the inner div (which will hold the actual value) and stick inside outer div
+            const firstInnerDiv = document.createElement("div");
+            firstInnerDiv.innerHTML = inputField.value;
+            newDiv.appendChild(firstInnerDiv);
+
+            // create the second inner div (the delete button) and stick inside outer div
+            const secondInnerDiv = document.createElement("div");
+            secondInnerDiv.innerHTML = "X";
+            secondInnerDiv.className = "right";
+            newDiv.appendChild(secondInnerDiv);
+            
+            // first event listener to change background color if clicked (also updates progress bar)
+            newDiv.addEventListener("click", () => {
                 newDiv.classList.toggle("teal");
                 document.querySelector("progress").value = proportionOfTasksCompleted();
-            });
+            })
 
             document.body.appendChild(newDiv);
             inputField.value = "";

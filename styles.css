@@ -30,3 +30,14 @@ progress[value]::-webkit-progress-value {
 progress.container-fluid {
     padding: 0px;
 }
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.right {
+    position: absolute;
+    right: 2%; 
+}
